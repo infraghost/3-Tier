@@ -5,9 +5,9 @@ pipeline {
         nodejs 'nodejs23' // Must match the name in Global Tool Configuration
     }
 
-    environment {
-        SCANNER_HOME = tool 'sonar-scanner' // Also must be pre-configured
-    }
+    // environment {
+    //     SCANNER_HOME = tool 'sonar-scanner' // Also must be pre-configured
+    // }
 
     stages {
 
