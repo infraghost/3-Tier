@@ -17,6 +17,12 @@ pipeline {
             }
         }
 
+        stage('Check Node') {
+            steps {
+                sh 'node -v && npm -v'  // ✅ Just uses whatever node is on PATH
+            }
+        }
+
         stage('Frontend Compilation') {
             steps {
                 dir('client') {
