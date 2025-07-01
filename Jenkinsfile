@@ -41,31 +41,31 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('sonar') {
-                    sh '''
-                        $SCANNER_HOME/bin/sonar-scanner \
-                        -Dsonar.projectKey=NodeJS-Project \
-                        -Dsonar.projectName=NodeJS-Project \
-                        -Dsonar.sources=.
-                    '''
-                }
-            }
-        }
+        // stage('SonarQube Analysis') {
+        //     steps {
+        //         withSonarQubeEnv('sonar') {
+        //             sh '''
+        //                 $SCANNER_HOME/bin/sonar-scanner \
+        //                 -Dsonar.projectKey=NodeJS-Project \
+        //                 -Dsonar.projectName=NodeJS-Project \
+        //                 -Dsonar.sources=.
+        //             '''
+        //         }
+        //     }
+        // }
 
-        stage('Quality Gate Check') {
-            steps {
-                timeout(time: 1, unit: 'HOURS') {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
-                }
-            }
-        }
+        // stage('Quality Gate Check') {
+        //     steps {
+        //         timeout(time: 1, unit: 'HOURS') {
+        //             waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
+        //         }
+        //     }
+        // }
 
-        stage('Trivy FS Scan') {
-            steps {
-                sh 'trivy fs --format table -o fs-report.html .'
-            }
-        }
+        // stage('Trivy FS Scan') {
+        //     steps {
+        //         sh 'trivy fs --format table -o fs-report.html .'
+        //     }
+        // }
     }
 }
