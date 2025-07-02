@@ -52,18 +52,18 @@ pipeline {
             }
         }
 
-        // stage('SonarQube Analysis') {
-        //     steps {
-        //         withSonarQubeEnv('sonar') {
-        //             sh '''
-        //                 $SCANNER_HOME/bin/sonar-scanner \
-        //                 -Dsonar.projectKey=3-Tier \
-        //                 -Dsonar.projectName=3-Tier \
-        //                 -Dsonar.sources=.
-        //             '''
-        //         }
-        //     }
-        // }
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('sonar') {
+                    sh '''
+                        $SCANNER_HOME/bin/sonar-scanner \
+                        -Dsonar.projectKey=3-Tier \
+                        -Dsonar.projectName=3-Tier \
+                        -Dsonar.sources=.
+                    '''
+                }
+            }
+        }
 
         // stage('Quality Gate Check') {
         //     steps {
