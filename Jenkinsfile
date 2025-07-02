@@ -10,6 +10,11 @@ pipeline {
     // }
 
     stages {
+        stage('Test') {
+            steps {
+                echo 'hello'
+            }
+        }
 
         stage('Cloning Git Repository') {
             steps {
